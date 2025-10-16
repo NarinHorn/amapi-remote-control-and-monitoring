@@ -1,6 +1,6 @@
 import { Device, DeviceCommand, TelemetryEvent, DeviceHealthMetrics } from "@/types/device";
 
-let devices: Device[] = [
+const devices: Device[] = [
 	{
 		id: "dev-001",
 		name: "Kiosk Entrance",
@@ -87,8 +87,8 @@ let devices: Device[] = [
 	},
 ];
 
-let commands: DeviceCommand[] = [];
-let healthMetrics: Map<string, DeviceHealthMetrics> = new Map();
+const commands: DeviceCommand[] = [];
+const healthMetrics: Map<string, DeviceHealthMetrics> = new Map();
 
 export function listDevices(): Device[] {
 	return devices.slice();

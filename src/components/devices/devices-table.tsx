@@ -35,8 +35,8 @@ export default function DevicesTable() {
 	const [statusFilter, setStatusFilter] = useState<DeviceStatus | "all">("all");
 	const [complianceFilter, setComplianceFilter] = useState<string>("all");
 	
-	const devices = data?.devices ?? [];
 	const filtered = useMemo(() => {
+		const devices = data?.devices ?? [];
 		let result = devices;
 		
 		if (query) {
@@ -55,7 +55,7 @@ export default function DevicesTable() {
 		}
 		
 		return result;
-	}, [devices, query, statusFilter, complianceFilter]);
+	}, [data?.devices, query, statusFilter, complianceFilter]);
 
 	const getStatusIcon = (status: DeviceStatus) => {
 		const config = statusConfig[status];

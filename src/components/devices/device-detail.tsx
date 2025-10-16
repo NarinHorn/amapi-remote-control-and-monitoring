@@ -16,7 +16,6 @@ import {
 	MapPin, 
 	Battery, 
 	Wifi, 
-	Shield, 
 	AlertTriangle, 
 	CheckCircle, 
 	XCircle, 
@@ -32,8 +31,7 @@ import {
 	Activity,
 	HardDrive,
 	Cpu,
-	Signal,
-	Navigation
+	Signal
 } from "lucide-react";
 import MockGoogleMap from "@/components/ui/mock-google-map";
 
@@ -83,7 +81,7 @@ export default function DeviceDetail({ deviceId }: { deviceId: string }) {
 		};
 	}, [deviceId]);
 
-	async function sendCommand(type: DeviceCommand["type"], payload?: any) {
+	async function sendCommand(type: DeviceCommand["type"], payload?: Record<string, unknown>) {
 		const res = await fetch(`/api/devices/${deviceId}/commands`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },

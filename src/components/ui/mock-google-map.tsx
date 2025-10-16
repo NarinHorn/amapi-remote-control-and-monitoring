@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Navigation, ZoomIn, ZoomOut, Layers } from "lucide-react";
+import { MapPin, ZoomIn, ZoomOut, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface MockGoogleMapProps {
