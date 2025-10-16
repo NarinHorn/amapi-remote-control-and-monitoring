@@ -1,103 +1,271 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { 
+	Smartphone, 
+	Shield, 
+	AlertTriangle, 
+	CheckCircle, 
+	XCircle, 
+	MapPin,
+	Activity,
+	TrendingUp,
+	Users,
+	Settings
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+		<main className="p-6 space-y-6">
+			{/* Header */}
+			<div className="flex items-center justify-between">
+				<div>
+					<h1 className="text-3xl font-bold">Android Device Management</h1>
+					<p className="text-muted-foreground mt-2">
+						Comprehensive remote control and monitoring for your Android device fleet
+					</p>
+				</div>
+				<Button asChild>
+					<Link href="/devices">
+						<Smartphone className="w-4 h-4 mr-2" />
+						Manage Devices
+					</Link>
+				</Button>
+			</div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+			{/* Quick Stats */}
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+						<CardTitle className="text-sm font-medium">Total Devices</CardTitle>
+						<Smartphone className="h-4 w-4 text-muted-foreground" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">4</div>
+						<p className="text-xs text-muted-foreground">
+							+1 from last month
+						</p>
+					</CardContent>
+				</Card>
+				
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+						<CardTitle className="text-sm font-medium">Online Devices</CardTitle>
+						<CheckCircle className="h-4 w-4 text-green-600" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">2</div>
+						<p className="text-xs text-muted-foreground">
+							50% of total devices
+						</p>
+					</CardContent>
+				</Card>
+				
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+						<CardTitle className="text-sm font-medium">Compliant Devices</CardTitle>
+						<Shield className="h-4 w-4 text-blue-600" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">3</div>
+						<p className="text-xs text-muted-foreground">
+							75% compliance rate
+						</p>
+					</CardContent>
+				</Card>
+				
+				<Card>
+					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+						<CardTitle className="text-sm font-medium">Lost Mode Active</CardTitle>
+						<AlertTriangle className="h-4 w-4 text-orange-600" />
+					</CardHeader>
+					<CardContent>
+						<div className="text-2xl font-bold">1</div>
+						<p className="text-xs text-muted-foreground">
+							Requires attention
+						</p>
+					</CardContent>
+				</Card>
+			</div>
+
+			{/* Device Status Overview */}
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				<Card>
+					<CardHeader>
+						<CardTitle className="flex items-center gap-2">
+							<Activity className="w-5 h-5" />
+							Device Status Overview
+						</CardTitle>
+					</CardHeader>
+					<CardContent className="space-y-4">
+						<div className="flex items-center justify-between">
+							<div className="flex items-center gap-2">
+								<CheckCircle className="w-4 h-4 text-green-600" />
+								<span>Online</span>
+							</div>
+							<Badge variant="default">2 devices</Badge>
+						</div>
+						<div className="flex items-center justify-between">
+							<div className="flex items-center gap-2">
+								<XCircle className="w-4 h-4 text-red-600" />
+								<span>Offline</span>
+							</div>
+							<Badge variant="destructive">1 device</Badge>
+						</div>
+						<div className="flex items-center justify-between">
+							<div className="flex items-center gap-2">
+								<AlertTriangle className="w-4 h-4 text-orange-600" />
+								<span>Lost Mode</span>
+							</div>
+							<Badge variant="destructive">1 device</Badge>
+						</div>
+						<div className="flex items-center justify-between">
+							<div className="flex items-center gap-2">
+								<Shield className="w-4 h-4 text-blue-600" />
+								<span>Non-compliant</span>
+							</div>
+							<Badge variant="secondary">1 device</Badge>
+						</div>
+					</CardContent>
+				</Card>
+
+				<Card>
+					<CardHeader>
+						<CardTitle className="flex items-center gap-2">
+							<TrendingUp className="w-5 h-5" />
+							Recent Activity
+						</CardTitle>
+					</CardHeader>
+					<CardContent className="space-y-3">
+						<div className="flex items-center justify-between text-sm">
+							<div className="flex items-center gap-2">
+								<MapPin className="w-4 h-4 text-blue-600" />
+								<span>Location updated</span>
+							</div>
+							<span className="text-muted-foreground">2m ago</span>
+						</div>
+						<div className="flex items-center justify-between text-sm">
+							<div className="flex items-center gap-2">
+								<AlertTriangle className="w-4 h-4 text-orange-600" />
+								<span>Lost Mode enabled</span>
+							</div>
+							<span className="text-muted-foreground">1h ago</span>
+						</div>
+						<div className="flex items-center justify-between text-sm">
+							<div className="flex items-center gap-2">
+								<CheckCircle className="w-4 h-4 text-green-600" />
+								<span>Device enrolled</span>
+							</div>
+							<span className="text-muted-foreground">2d ago</span>
+						</div>
+						<div className="flex items-center justify-between text-sm">
+							<div className="flex items-center gap-2">
+								<Settings className="w-4 h-4 text-gray-600" />
+								<span>Policy updated</span>
+							</div>
+							<span className="text-muted-foreground">3d ago</span>
+						</div>
+					</CardContent>
+				</Card>
+			</div>
+
+			{/* Quick Actions */}
+			<Card>
+				<CardHeader>
+					<CardTitle className="flex items-center gap-2">
+						<Settings className="w-5 h-5" />
+						Quick Actions
+					</CardTitle>
+				</CardHeader>
+				<CardContent>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+						<Button asChild variant="outline" className="h-20 flex-col gap-2">
+							<Link href="/devices">
+								<Smartphone className="w-6 h-6" />
+								<span>View All Devices</span>
+							</Link>
+						</Button>
+						<Button asChild variant="outline" className="h-20 flex-col gap-2">
+							<Link href="/devices?status=lost">
+								<AlertTriangle className="w-6 h-6" />
+								<span>Lost Devices</span>
+							</Link>
+						</Button>
+						<Button asChild variant="outline" className="h-20 flex-col gap-2">
+							<Link href="/devices?compliance=non_compliant">
+								<Shield className="w-6 h-6" />
+								<span>Non-compliant</span>
+							</Link>
+						</Button>
+					</div>
+				</CardContent>
+			</Card>
+
+			{/* Features Overview */}
+			<Card>
+				<CardHeader>
+					<CardTitle>Android Management API Features</CardTitle>
+				</CardHeader>
+				<CardContent>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<MapPin className="w-5 h-5 text-blue-600" />
+								<h3 className="font-semibold">Location Tracking</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Real-time GPS tracking for logistics, field workers, and lost device recovery
+							</p>
+						</div>
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<AlertTriangle className="w-5 h-5 text-orange-600" />
+								<h3 className="font-semibold">Lost Mode</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Secure lost/stolen devices with offline command queuing and automatic locking
+							</p>
+						</div>
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<Shield className="w-5 h-5 text-green-600" />
+								<h3 className="font-semibold">Remote Control</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Lock, reboot, wipe, and send messages to devices remotely
+							</p>
+						</div>
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<Activity className="w-5 h-5 text-purple-600" />
+								<h3 className="font-semibold">Live Monitoring</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Real-time battery, CPU, storage, and network monitoring via SSE
+							</p>
+						</div>
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<CheckCircle className="w-5 h-5 text-blue-600" />
+								<h3 className="font-semibold">Compliance</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Monitor device compliance status and security posture
+							</p>
+						</div>
+						<div className="space-y-2">
+							<div className="flex items-center gap-2">
+								<Users className="w-5 h-5 text-indigo-600" />
+								<h3 className="font-semibold">User Management</h3>
+							</div>
+							<p className="text-sm text-muted-foreground">
+								Associate devices with users and manage enrollment tokens
+							</p>
+						</div>
         </div>
+				</CardContent>
+			</Card>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
   );
 }
