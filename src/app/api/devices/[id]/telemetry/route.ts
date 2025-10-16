@@ -3,9 +3,9 @@ import { startTelemetrySimulator, subscribeTelemetry } from "@/server/mockStore"
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
 	startTelemetrySimulator();
-	const deviceId = params.id;
+	const { id: deviceId } = await params;
 	const encoder = new TextEncoder();
 	const stream = new ReadableStream({
 		start(controller) {
